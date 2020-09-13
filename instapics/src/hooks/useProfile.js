@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getProfile } from "../functions/axios";
+import { getProfile } from "../services/axios";
 
 const useProfile = (nickname) => {
   const [profile, setProfile] = useState();

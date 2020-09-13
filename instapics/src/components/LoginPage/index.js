@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 
-import { login } from "../../functions/axios";
+import { login } from "../../services/axios";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";

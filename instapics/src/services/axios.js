@@ -1,23 +1,27 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3003";
+const baseUrl = "https://labepics.azurewebsites.net";
+
+export const signup = async (body) => {
+  console.log("inicio signup");
+  try {
+    const response = await axios.post(`${baseUrl}/user/signup`, body);
+    console.log("depois try await, response :");
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log("catch, error:");
+    console.log(error);
+    return error.response;
+  }
+};
 
 export const login = async (body) => {
   try {
     const response = await axios.post(`${baseUrl}/user/login`, body);
     return response.data;
   } catch (error) {
-    return error.response.data;
-  }
-};
-
-export const signup = async (body) => {
-  try {
-    const response = await axios.post(`${baseUrl}/user/signup`, body);
-    return response.data;
-  } catch (error) {
-    console.log(error.response);
-    return error.response;
+    return error;
   }
 };
 

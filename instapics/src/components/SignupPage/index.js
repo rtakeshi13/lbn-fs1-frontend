@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 
-import { signup } from "../../functions/axios";
+import { signup } from "../../services/axios";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -76,7 +76,7 @@ const SignupPage = () => {
   const handleClickShowPasswordCheck = () => {
     setShowPasswordCheck(!showPasswordCheck);
   };
-
+  console.log("SignupPage/index");
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>

@@ -129,3 +129,6 @@ yarn-debug.log*
 yarn-error.log*
 
 instapics/build/
+instapics/labepics-firebase-adminsdk-x0rmw-295b23c4fb.json
+instapics/storageConfig.json
+instapics/storage.rules

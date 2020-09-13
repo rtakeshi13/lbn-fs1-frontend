@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPostsByUserId } from "../functions/axios";
+import { getPostsByUserId } from "../services/axios";
 
 const useProfilePosts = (userId) => {
   const [posts, setPosts] = useState([]);
