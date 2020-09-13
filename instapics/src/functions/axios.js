@@ -24,7 +24,7 @@ export const signup = async (body) => {
 export const getProfile = async (nickname) => {
   const axiosConfig = {
     headers: {
-      authentication: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: JSON.parse(localStorage.getItem("labepics")).token,
     },
   };
   try {
@@ -42,7 +42,7 @@ export const getProfile = async (nickname) => {
 export const updateProfile = async (body) => {
   const axiosConfig = {
     headers: {
-      authentication: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: JSON.parse(localStorage.getItem("labepics")).token,
     },
   };
   try {
@@ -57,7 +57,7 @@ export const updateProfile = async (body) => {
 export const getPostsByUserId = async (userId, page) => {
   const axiosConfig = {
     headers: {
-      authentication: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: JSON.parse(localStorage.getItem("labepics")).token,
     },
   };
   try {
@@ -75,15 +75,11 @@ export const getPostsByUserId = async (userId, page) => {
 export const createPost = async (body) => {
   const axiosConfig = {
     headers: {
-      authentication: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: JSON.parse(localStorage.getItem("labepics")).token,
     },
   };
   try {
-    const response = await axios.post(
-      `${baseUrl}/post/create`,
-      body,
-      axiosConfig
-    );
+    await axios.post(`${baseUrl}/post/create`, body, axiosConfig);
     return true;
   } catch (error) {
     console.log(error.response);

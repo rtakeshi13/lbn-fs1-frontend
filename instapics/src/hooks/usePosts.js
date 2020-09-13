@@ -4,11 +4,12 @@ import { getPostsByUserId } from "../functions/axios";
 const useProfilePosts = (userId) => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
+
   useEffect(() => {
     (async () => {
       if (userId) {
         const response = await getPostsByUserId(userId, page);
-        setPosts(posts.concat(response));
+        setPosts((p) => p.concat(response));
       }
     })();
   }, [userId, page]);

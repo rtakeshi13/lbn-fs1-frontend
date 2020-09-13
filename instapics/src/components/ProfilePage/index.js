@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { useParams } from "react-router-dom";
 
@@ -25,14 +25,14 @@ function ProfilePage() {
           {posts.map((i, index) => (
             <div
               style={{
-                height: 60,
+                height: 240,
                 border: "1px solid green",
                 margin: 6,
                 padding: 8,
               }}
               key={index}
             >
-              div - #{index}
+              <img src={i.mediaUrl} height="100%" />
             </div>
           ))}
         </InfiniteScroll>
