@@ -6,6 +6,7 @@ import SignupPage from "./components/SignupPage";
 import LoginPage from "./components/LoginPage";
 import ProfilePage from "./components/ProfilePage";
 import LandingPage from "./components/LandingPage";
+import Footer from "./components/Footer";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
         <Route exact path="/accounts/login" component={LoginPage} />
         <ProtectedRoute exact path="/:nickname" component={ProfilePage} />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 };

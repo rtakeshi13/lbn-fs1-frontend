@@ -25,7 +25,7 @@ function ProfilePage() {
           {posts.map((i, index) => (
             <div
               style={{
-                height: 30,
+                height: 60,
                 border: "1px solid green",
                 margin: 6,
                 padding: 8,
