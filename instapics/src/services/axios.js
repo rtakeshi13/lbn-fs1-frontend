@@ -1,30 +1,35 @@
 import axios from "axios";
+import { getToken } from "./localStorage";
 
-const baseUrl = "http://localhost:3003";
+const baseUrl = "https://labepics.azurewebsites.net";
+
+export const signup = async (body) => {
+  console.log("inicio signup");
+  try {
+    const response = await axios.post(`${baseUrl}/user/signup`, body);
+    console.log("depois try await, response :");
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log("catch, error:");
+    console.log(error);
+    return error.response;
+  }
+};
 
 export const login = async (body) => {
   try {
     const response = await axios.post(`${baseUrl}/user/login`, body);
     return response.data;
   } catch (error) {
-    return error.response.data;
-  }
-};
-
-export const signup = async (body) => {
-  try {
-    const response = await axios.post(`${baseUrl}/user/signup`, body);
-    return response.data;
-  } catch (error) {
-    console.log(error.response);
-    return error.response;
+    return error;
   }
 };
 
 export const getProfile = async (nickname) => {
   const axiosConfig = {
     headers: {
-      authentication: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: getToken(),
     },
   };
   try {
@@ -42,7 +47,7 @@ export const getProfile = async (nickname) => {
 export const updateProfile = async (body) => {
   const axiosConfig = {
     headers: {
-      authentication: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: getToken(),
     },
   };
   try {
@@ -57,7 +62,7 @@ export const updateProfile = async (body) => {
 export const getPostsByUserId = async (userId, page) => {
   const axiosConfig = {
     headers: {
-      authentication: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: getToken(),
     },
   };
   try {
@@ -75,15 +80,11 @@ export const getPostsByUserId = async (userId, page) => {
 export const createPost = async (body) => {
   const axiosConfig = {
     headers: {
-      authentication: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: getToken(),
     },
   };
   try {
-    const response = await axios.post(
-      `${baseUrl}/post/create`,
-      body,
-      axiosConfig
-    );
+    await axios.post(`${baseUrl}/post/create`, body, axiosConfig);
     return true;
   } catch (error) {
     console.log(error.response);

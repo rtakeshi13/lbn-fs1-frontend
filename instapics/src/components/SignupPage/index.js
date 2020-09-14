@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 
-import { signup } from "../../functions/axios";
+import { signup } from "../../services/axios";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -17,7 +17,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 
 import { TextFieldWrapper, PasswordCheckLabel } from "./styles";
-import Logo from "./logo.svg";
+import LogoLight from "../../media/burger.svg";
+import LogoDark from "../../media/burger2.svg";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -60,8 +61,11 @@ const SignupPage = () => {
     event.preventDefault();
     if (form.password === passwordCheck) {
       const response = await signup(form);
-      if (response.token) {
-        localStorage.setItem("labepics", JSON.stringify(response));
+      if (response.sucess) {
+        localStorage.setItem(
+          "labepics",
+          JSON.stringify({ nickname: response.nickname, token: response.token })
+        );
         history.push(`/${form.nickname}`);
       } else {
         window.alert(response.message);
@@ -76,11 +80,11 @@ const SignupPage = () => {
   const handleClickShowPasswordCheck = () => {
     setShowPasswordCheck(!showPasswordCheck);
   };
-
+  console.log("SignupPage/index");
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
-        <img src={Logo} alt="iFuture logo" />
+        <img src={LogoLight} alt="labepics logo" style={{ height: "100px" }} />
         <Typography component="h1" style={{ marginTop: "2rem" }}>
           Cadastrar
         </Typography>
@@ -96,6 +100,7 @@ const SignupPage = () => {
             label="Full Name"
             name="name"
             type="text"
+            autoComplete="full-name"
           />
           <TextFieldWrapper
             style={{ marginBottom: "0.5rem" }}
@@ -105,9 +110,10 @@ const SignupPage = () => {
             margin="normal"
             required
             fullWidth
-            label="Nickname"
+            label="Username"
             name="nickname"
             type="text"
+            autoComplete="username"
           />
           <TextFieldWrapper
             style={{ marginBottom: "0.5rem" }}
@@ -120,6 +126,7 @@ const SignupPage = () => {
             label="Email"
             name="email"
             type="email"
+            autoComplete="email"
           />
 
           <FormControl
@@ -139,6 +146,7 @@ const SignupPage = () => {
               name="password"
               placeholder="Mínimo 6 caracteres"
               type={showPassword ? "text" : "password"}
+              autoComplete="new-password"
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -178,9 +186,9 @@ const SignupPage = () => {
               onChange={(e) => setPasswordCheck(e.target.value)}
               value={passwordCheck}
               required
-              name="password"
               placeholder="Confirme a senha anterior"
               type={showPasswordCheck ? "text" : "password"}
+              autoComplete="new-password"
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
