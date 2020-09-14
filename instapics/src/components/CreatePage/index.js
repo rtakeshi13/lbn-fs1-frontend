@@ -5,12 +5,14 @@ import { useHistory } from "react-router-dom";
 
 import { storageRef } from "../../services/firebase";
 import { createPost } from "../../services/axios";
+import { getNickname } from "../../services/localStorage";
 
 function CreatePage() {
   const appContext = useContext(AppContext);
   const [caption, setCaption] = useState("");
   const history = useHistory();
-  const nickname = JSON.parse(localStorage.getItem("labepics")).nickname;
+  const nickname = getNickname();
+
   const handleCaptionChange = (e) => {
     setCaption(e.target.value);
   };

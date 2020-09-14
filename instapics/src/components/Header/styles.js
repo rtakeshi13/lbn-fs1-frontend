@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import AppBar from "@material-ui/core/AppBar";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 export const AppHeader = styled(AppBar)`
   height: 2.75rem;
@@ -13,7 +14,7 @@ export const AppHeader = styled(AppBar)`
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 2rem 1fr 2rem;
-  grid-template-areas: "back title ...";
+  grid-template-areas: "back title exit";
   align-items: center;
   height: 100%;
 `;
@@ -30,4 +31,9 @@ export const Title = styled.div`
   font-size: 1rem;
   margin-top: 0.5rem;
   text-align: center;
+`;
+
+export const LogoutButton = styled(ExitToAppIcon)`
+  grid-area: exit;
+  cursor: pointer;
 `;

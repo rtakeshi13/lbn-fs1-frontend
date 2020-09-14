@@ -3,6 +3,8 @@ import styled from "styled-components";
 import AppBar from "@material-ui/core/AppBar";
 
 export const AppFooter = styled(AppBar)`
+  display: ${({ hidden }) => (hidden ? "none" : "inherit")};
+
   height: 3rem;
   background-color: #ff6d3c;
   color: white;

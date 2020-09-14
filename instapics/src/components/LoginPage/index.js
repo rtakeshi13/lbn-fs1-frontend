@@ -17,7 +17,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 
 import { TextFieldWrapper } from "./styles";
-import Logo from "./logo.svg";
+import LogoLight from "../../media/burger.svg";
+import LogoDark from "../../media/burger2.svg";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -52,11 +53,14 @@ const LoginPage = () => {
     event.preventDefault();
     const response = await login(form);
 
-    if (response.token) {
-      localStorage.setItem("labepics", JSON.stringify(response));
+    if (response.sucess) {
+      localStorage.setItem(
+        "labepics",
+        JSON.stringify({ nickname: response.nickname, token: response.token })
+      );
       history.push(`/${response.nickname}`);
     } else {
-      console.log(response);
+      window.alert(response);
     }
   };
 
@@ -67,7 +71,11 @@ const LoginPage = () => {
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
-        <img src={Logo} alt="iFuture logo" />
+        <img
+          src={LogoLight}
+          alt="labepics logo by Freepik"
+          style={{ height: "100px" }}
+        />
         <Typography component="h1" style={{ marginTop: "2rem" }}>
           Entrar
         </Typography>
@@ -83,6 +91,7 @@ const LoginPage = () => {
             label="Email or nickname"
             name="emailOrNickname"
             type="text"
+            autoComplete="username"
           />
           <FormControl
             variant="outlined"
@@ -100,6 +109,7 @@ const LoginPage = () => {
               required
               name="password"
               type={showPassword ? "text" : "password"}
+              autoComplete="current-password"
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton

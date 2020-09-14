@@ -26,8 +26,10 @@ const Footer = () => {
     history.push("/create");
   };
 
+  const isHidden = location.pathname.match(/login|signup/);
+
   return (
-    <AppFooter>
+    <AppFooter hidden={isHidden}>
       <Wrapper>
         <IconButton
           component="span"

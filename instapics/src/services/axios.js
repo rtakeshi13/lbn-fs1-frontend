@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getToken } from "./localStorage";
 
 const baseUrl = "https://labepics.azurewebsites.net";
 
@@ -28,7 +29,7 @@ export const login = async (body) => {
 export const getProfile = async (nickname) => {
   const axiosConfig = {
     headers: {
-      authorization: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: getToken(),
     },
   };
   try {
@@ -46,7 +47,7 @@ export const getProfile = async (nickname) => {
 export const updateProfile = async (body) => {
   const axiosConfig = {
     headers: {
-      authorization: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: getToken(),
     },
   };
   try {
@@ -61,7 +62,7 @@ export const updateProfile = async (body) => {
 export const getPostsByUserId = async (userId, page) => {
   const axiosConfig = {
     headers: {
-      authorization: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: getToken(),
     },
   };
   try {
@@ -79,7 +80,7 @@ export const getPostsByUserId = async (userId, page) => {
 export const createPost = async (body) => {
   const axiosConfig = {
     headers: {
-      authorization: JSON.parse(localStorage.getItem("labepics")).token,
+      authorization: getToken(),
     },
   };
   try {
