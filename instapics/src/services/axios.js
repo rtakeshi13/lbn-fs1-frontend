@@ -4,16 +4,12 @@ import { getToken } from "./localStorage";
 const baseUrl = "https://labepics.azurewebsites.net";
 
 export const signup = async (body) => {
-  console.log("inicio signup");
   try {
     const response = await axios.post(`${baseUrl}/user/signup`, body);
-    console.log("depois try await, response :");
-    console.log(response);
     return response.data;
   } catch (error) {
-    console.log("catch, error:");
-    console.log(error);
-    return error.response;
+    console.log(error.response);
+    return false;
   }
 };
 
@@ -22,11 +18,12 @@ export const login = async (body) => {
     const response = await axios.post(`${baseUrl}/user/login`, body);
     return response.data;
   } catch (error) {
-    return error;
+    console.log(error.response);
+    return false;
   }
 };
 
-export const getProfile = async (nickname) => {
+export const getProfileByNickname = async (nickname) => {
   const axiosConfig = {
     headers: {
       authorization: getToken(),
@@ -39,23 +36,8 @@ export const getProfile = async (nickname) => {
     );
     return response.data.user;
   } catch (error) {
-    console.log(error);
-    return error.response.data;
-  }
-};
-
-export const updateProfile = async (body) => {
-  const axiosConfig = {
-    headers: {
-      authorization: getToken(),
-    },
-  };
-  try {
-    const response = await axios.put(`${baseUrl}/profile`, body, axiosConfig);
-    return response.data.user;
-  } catch (error) {
-    console.log(error.response.data.message);
-    return error.response.data;
+    console.log(error.response);
+    return false;
   }
 };
 
@@ -73,7 +55,7 @@ export const getPostsByUserId = async (userId, page) => {
     return response.data.posts;
   } catch (error) {
     console.log(error.response);
-    return [];
+    return false;
   }
 };
 

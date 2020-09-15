@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { getProfile } from "../services/axios";
+import { getProfileByNickname } from "../services/axios";
 
 const useProfile = (nickname) => {
   const [profile, setProfile] = useState();
 
   useEffect(() => {
     (async () => {
-      const response = await getProfile(nickname);
+      const response = await getProfileByNickname(nickname);
       setProfile(response);
     })();
   }, [nickname]);

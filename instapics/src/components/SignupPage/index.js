@@ -80,7 +80,7 @@ const SignupPage = () => {
   const handleClickShowPasswordCheck = () => {
     setShowPasswordCheck(!showPasswordCheck);
   };
-  console.log("SignupPage/index");
+
   return (
     <Container component="main" maxWidth="xs">
       <div className={classes.paper}>
