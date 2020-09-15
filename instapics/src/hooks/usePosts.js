@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getPostsByUserId } from "../services/axios";
 
-const useProfilePosts = (userId) => {
+const usePosts = (userId) => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
 
@@ -20,4 +20,4 @@ const useProfilePosts = (userId) => {
   return { posts, getNextPage };
 };
 
-export default useProfilePosts;
+export default usePosts;

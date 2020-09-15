@@ -1,7 +1,8 @@
 import axios from "axios";
 import { getToken } from "./localStorage";
 
-const baseUrl = "https://labepics.azurewebsites.net";
+// const baseUrl = "https://labepics.azurewebsites.net";
+const baseUrl = "http://localhost:3003";
 
 export const signup = async (body) => {
   try {

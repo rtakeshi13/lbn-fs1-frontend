@@ -2,22 +2,23 @@ import styled from "styled-components";
 import Avatar from "@material-ui/core/Avatar";
 
 export const Wrapper = styled.div`
-  border: 1px solid red;
+  height: 240px;
 
-  height: 220px;
-
-  display: grid;
+  /* display: grid; */
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ProfilePicture = styled(Avatar)`
   width: 5rem;
   height: 5rem;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 export const CounterWrapper = styled.div`
-  height: 5rem;
+  height: 3rem;
 
   display: flex;
   justify-content: space-around;
