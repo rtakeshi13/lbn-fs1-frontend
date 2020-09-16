@@ -74,3 +74,50 @@ export const createPost = async (body) => {
     return false;
   }
 };
+
+export const getCollections = async () => {
+  const axiosConfig = {
+    headers: {
+      authorization: getToken(),
+    },
+  };
+  try {
+    const response = await axios.get(`${baseUrl}/post/collection`, axiosConfig);
+    return response.data.collections;
+  } catch (error) {
+    console.log(error.response);
+    return false;
+  }
+};
+
+export const createCollection = async (body) => {
+  const axiosConfig = {
+    headers: {
+      authorization: getToken(),
+    },
+  };
+  try {
+    await axios.put(`${baseUrl}/post/collection`, body, axiosConfig);
+  } catch (error) {
+    console.log(error.response);
+    return false;
+  }
+};
+
+export const search = async (input) => {
+  const axiosConfig = {
+    headers: {
+      authorization: getToken(),
+    },
+  };
+  try {
+    const response = await axios.get(
+      `${baseUrl}/search?q=${input.replace("#", "%23")}`,
+      axiosConfig
+    );
+    return response.data.result;
+  } catch (error) {
+    console.log(error.response);
+    return false;
+  }
+};

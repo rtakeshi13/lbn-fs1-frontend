@@ -18,7 +18,7 @@ const Footer = () => {
   const appContext = useContext(AppContext);
 
   const handleNavClick = (path) => () => {
-    console.log(location.pathname);
+    history.push(path);
   };
 
   const handleImageInputChange = () => {
@@ -42,7 +42,7 @@ const Footer = () => {
         <IconButton
           component="span"
           style={{ color: "white" }}
-          onClick={handleNavClick("ola")}
+          onClick={handleNavClick("/search")}
         >
           <SearchIcon />
         </IconButton>

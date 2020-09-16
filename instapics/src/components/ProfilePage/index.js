@@ -24,7 +24,13 @@ function ProfilePage() {
       }}
       key={i.id}
     >
-      <img alt={i.caption} src={i.mediaUrl} height="100%" />
+      <img
+        key={i.id + 1}
+        alt={i.caption}
+        src={i.mediaUrl}
+        height="100%"
+        width="100%"
+      />
     </div>
   ));
 

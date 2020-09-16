@@ -26,6 +26,7 @@ export const CollectionThumbnail = styled(Avatar)`
   width: 3rem;
   height: 3rem;
   margin-left: 0.5rem;
+  cursor: pointer;
 `;
 
 export const CollectionName = styled.span`

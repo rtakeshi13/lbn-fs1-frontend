@@ -11,6 +11,8 @@ import LandingPage from "./components/LandingPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CreatePostPage from "./components/CreatePostPage";
+import CreateCollectionPage from "./components/CreateCollectionPage";
+import SearchPage from "./components/SearchPage";
 
 const BodyWrapper = styled.div`
   margin-top: 3rem;
@@ -27,6 +29,12 @@ const Router = () => {
           <Route exact path="/accounts/signup" component={SignupPage} />
           <Route exact path="/accounts/login" component={LoginPage} />
           <ProtectedRoute exact path="/create" component={CreatePostPage} />
+          <ProtectedRoute exact path="/search" component={SearchPage} />
+          <ProtectedRoute
+            exact
+            path="/collection/create"
+            component={CreateCollectionPage}
+          />
           <ProtectedRoute exact path="/:nickname" component={ProfilePage} />
         </Switch>
       </BodyWrapper>

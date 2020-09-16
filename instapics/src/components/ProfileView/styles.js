@@ -24,8 +24,8 @@ export const CounterWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  border-top: 1px solid blue;
-  border-bottom: 1px solid blue;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
 `;
 
 export const Counter = styled.div`

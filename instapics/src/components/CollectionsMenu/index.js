@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   CollectionWrapper,
   CollectionMenu,
@@ -9,6 +10,7 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 
 function CollectionsMenu({ collections }) {
+  const history = useHistory();
   const collectionsRender = collections.map((item) => (
     <Collection key={item.id}>
       <CollectionThumbnail src={item.thumbnailUrl} />
@@ -23,7 +25,7 @@ function CollectionsMenu({ collections }) {
         <Collection>
           <CollectionThumbnail
             onClick={() => {
-              console.log(Date.now());
+              history.push("/collection/create");
             }}
           >
             <AddIcon color="action" />
