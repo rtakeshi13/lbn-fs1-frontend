@@ -18,7 +18,6 @@ import FormControl from "@material-ui/core/FormControl";
 
 import { TextFieldWrapper } from "./styles";
 import LogoLight from "../../media/burger.svg";
-import LogoDark from "../../media/burger2.svg";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

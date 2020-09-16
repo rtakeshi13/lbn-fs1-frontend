@@ -5,43 +5,52 @@ import { useParams } from "react-router-dom";
 import useProfile from "../../hooks/useProfile";
 import usePosts from "../../hooks/usePosts";
 
+import { PostFeed } from "./styles";
 import ProfileView from "../ProfileView";
-import InfiniteScroll from "react-infinite-scroll-component";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 function ProfilePage() {
   const { nickname } = useParams();
   const profile = useProfile(nickname);
   const { posts, getNextPage } = usePosts(profile && profile.id);
 
+  const postsRender = posts.map((i, index) => (
+    <div
+      style={{
+        height: 240,
+        border: "1px solid green",
+        margin: 6,
+        padding: 8,
+      }}
+      key={i.id}
+    >
+      <img
+        key={i.id + 1}
+        alt={i.caption}
+        src={i.mediaUrl}
+        height="100%"
+        width="100%"
+      />
+    </div>
+  ));
+
   return (
     <>
       {profile ? (
         <div>
           <ProfileView profile={profile} />
-          <InfiniteScroll
+          <PostFeed
             dataLength={posts.length}
             next={getNextPage}
             scrollThreshold="20px"
             hasMore={posts.length < profile.postsCount}
-            loader={<h4>Loading...</h4>}
+            loader={<Skeleton variant="rect" height={240} animation="wave" />}
           >
-            {posts.map((i, index) => (
-              <div
-                style={{
-                  height: 240,
-                  border: "1px solid green",
-                  margin: 6,
-                  padding: 8,
-                }}
-                key={index}
-              >
-                <img src={i.mediaUrl} height="100%" />
-              </div>
-            ))}
-          </InfiniteScroll>
+            {postsRender}
+          </PostFeed>
         </div>
       ) : (
-        <div>Loading</div>
+        <Skeleton variant="rect" height={240} animation="wave" />
       )}
     </>
   );

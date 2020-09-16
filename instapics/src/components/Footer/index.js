@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import AddAPhotoOutlinedIcon from "@material-ui/icons/AddAPhotoOutlined";
 import DynamicFeedOutlinedIcon from "@material-ui/icons/DynamicFeedOutlined";
 import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
+import SearchIcon from "@material-ui/icons/Search";
 
 const Footer = () => {
   const history = useHistory();
@@ -17,7 +18,7 @@ const Footer = () => {
   const appContext = useContext(AppContext);
 
   const handleNavClick = (path) => () => {
-    console.log(location.pathname);
+    history.push(path);
   };
 
   const handleImageInputChange = () => {
@@ -38,7 +39,13 @@ const Footer = () => {
         >
           <DynamicFeedOutlinedIcon />
         </IconButton>
-
+        <IconButton
+          component="span"
+          style={{ color: "white" }}
+          onClick={handleNavClick("/search")}
+        >
+          <SearchIcon />
+        </IconButton>
         <input
           id="fileUpload"
           accept="image/*"
