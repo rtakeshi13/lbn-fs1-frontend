@@ -2,17 +2,14 @@ import React from "react";
 
 import { useParams } from "react-router-dom";
 
-import useProfile from "../../hooks/useProfile";
-import useProfilePosts from "../../hooks/useProfilePosts";
+import useTagPosts from "../../hooks/useTagPosts";
 
 import { PostFeed } from "./styles";
-import ProfileView from "../ProfileView";
 import Skeleton from "@material-ui/lab/Skeleton";
 
-function ProfilePage() {
-  const { nickname } = useParams();
-  const profile = useProfile(nickname);
-  const { posts, getNextPage } = useProfilePosts(profile && profile.id);
+function TagFeedPage() {
+  const { tag, count } = useParams();
+  const { posts, getNextPage } = useTagPosts(tag);
 
   const postsRender = posts.map((i) => (
     <div
@@ -30,14 +27,13 @@ function ProfilePage() {
 
   return (
     <>
-      {profile ? (
+      {posts.length ? (
         <div>
-          <ProfileView profile={profile} />
           <PostFeed
             dataLength={posts.length}
             next={getNextPage}
             scrollThreshold="20px"
-            hasMore={posts.length < profile.postsCount}
+            hasMore={posts.length < count}
             loader={<Skeleton variant="rect" height={240} animation="wave" />}
           >
             {postsRender}
@@ -50,4 +46,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default TagFeedPage;

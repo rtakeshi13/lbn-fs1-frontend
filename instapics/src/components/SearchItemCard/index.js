@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import {
   Wrapper,
@@ -12,7 +12,8 @@ function SearchItemCard({ item }) {
   const history = useHistory();
 
   const handleClick = () => {
-    if (item.tag) history.push(`/explore/${item.tag.replace("#", "")}`);
+    if (item.tag)
+      history.push(`/tags/${item.tag.replace("#", "")}/${item.postsCount}`);
     else history.push(`/${item.nickname}`);
   };
 
@@ -25,7 +26,15 @@ function SearchItemCard({ item }) {
 
   return (
     <Wrapper onClick={handleClick}>
-      <ProfilePicture>#</ProfilePicture>
+      <ProfilePicture
+        src={
+          item.tag
+            ? undefined
+            : "https://miro.medium.com/max/395/0*yt7Mwvdb8e08xxhk.jpg"
+        }
+      >
+        #
+      </ProfilePicture>
       <TextWrapper>
         <Title>{text.title}</Title>
         <Subtitle>{text.subtitle}</Subtitle>

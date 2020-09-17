@@ -24,7 +24,7 @@ function SearchPage() {
   };
 
   const resultsRender = seachResults.map((item) => (
-    <SearchItemCard item={item} />
+    <SearchItemCard key={item.id} item={item} />
   ));
 
   return (

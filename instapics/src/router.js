@@ -13,6 +13,9 @@ import Footer from "./components/Footer";
 import CreatePostPage from "./components/CreatePostPage";
 import CreateCollectionPage from "./components/CreateCollectionPage";
 import SearchPage from "./components/SearchPage";
+import NotFound from "./components/NotFoundPage";
+import TagFeedPage from "./components/TagFeedPage";
+import UserFeedPage from "./components/UserFeedPage";
 
 const BodyWrapper = styled.div`
   margin-top: 3rem;
@@ -35,7 +38,14 @@ const Router = () => {
             path="/collection/create"
             component={CreateCollectionPage}
           />
+          <ProtectedRoute exact path="/feed" component={UserFeedPage} />
           <ProtectedRoute exact path="/:nickname" component={ProfilePage} />
+          <ProtectedRoute
+            exact
+            path="/tags/:tag/:count"
+            component={TagFeedPage}
+          />
+          <Route path="*" component={NotFound} />
         </Switch>
       </BodyWrapper>
       <Footer />

@@ -11,16 +11,17 @@ import AddIcon from "@material-ui/icons/Add";
 
 function CollectionsMenu({ collections }) {
   const history = useHistory();
+
   const collectionsRender = collections.map((item) => (
     <Collection key={item.id}>
       <CollectionThumbnail src={item.thumbnailUrl} />
-      <CollectionName>{item.name}</CollectionName>
+      <CollectionName>{item.name.slice(0, 8)}</CollectionName>
     </Collection>
   ));
 
   return (
     <CollectionWrapper>
-      <CollectionMenu cols={4}>
+      <CollectionMenu cols={1}>
         {/* Create new collection button */}
         <Collection>
           <CollectionThumbnail

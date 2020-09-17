@@ -1,19 +1,17 @@
 import React, { useRef, useContext } from "react";
 import AppContext from "../../contexts/AppContext";
 
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { AppFooter, Wrapper } from "./styles";
 
 import IconButton from "@material-ui/core/IconButton";
 import AddAPhotoOutlinedIcon from "@material-ui/icons/AddAPhotoOutlined";
 import DynamicFeedOutlinedIcon from "@material-ui/icons/DynamicFeedOutlined";
-import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
 import SearchIcon from "@material-ui/icons/Search";
 
 const Footer = () => {
   const history = useHistory();
-  const location = useLocation();
   const imageInput = useRef();
   const appContext = useContext(AppContext);
 
@@ -27,7 +25,7 @@ const Footer = () => {
     history.push("/create");
   };
 
-  const isHidden = location.pathname.match(/login|signup/);
+  const isHidden = history.location.pathname.match(/login|signup/);
 
   return (
     <AppFooter hidden={isHidden}>
@@ -35,17 +33,11 @@ const Footer = () => {
         <IconButton
           component="span"
           style={{ color: "white" }}
-          onClick={handleNavClick("ola")}
+          onClick={handleNavClick("/feed")}
         >
           <DynamicFeedOutlinedIcon />
         </IconButton>
-        <IconButton
-          component="span"
-          style={{ color: "white" }}
-          onClick={handleNavClick("/search")}
-        >
-          <SearchIcon />
-        </IconButton>
+
         <input
           id="fileUpload"
           accept="image/*"
@@ -63,9 +55,9 @@ const Footer = () => {
         <IconButton
           component="span"
           style={{ color: "white" }}
-          onClick={handleNavClick("oie")}
+          onClick={handleNavClick("/search")}
         >
-          <AccountBoxOutlinedIcon />
+          <SearchIcon />
         </IconButton>
       </Wrapper>
     </AppFooter>

@@ -54,8 +54,8 @@ function CreatePostPage() {
     <div>
       <Preview
         alt="alt"
-        // src={appContext.image.localURL}
-        src="https://observatoriodocinema.uol.com.br/wp-content/uploads/2020/05/Gollum.jpg"
+        src={appContext.image.localURL}
+        // src="https://observatoriodocinema.uol.com.br/wp-content/uploads/2020/05/Gollum.jpg"
       />
       <Caption value={caption} onChange={handleCaptionChange} autoFocus />
       <Select

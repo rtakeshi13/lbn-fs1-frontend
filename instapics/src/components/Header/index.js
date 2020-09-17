@@ -1,15 +1,14 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { AppHeader, Wrapper, BackButton, Title, LogoutButton } from "./styles";
 
 const Header = (props) => {
   const { title, back } = props;
   const history = useHistory();
-  const location = useLocation();
 
   const handleGoBackClick = () => {
-    if (location.pathname === "/address") {
+    if (history.location.pathname === "/address") {
       history.push("/orders");
     } else {
       history.goBack();

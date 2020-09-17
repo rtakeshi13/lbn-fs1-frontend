@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
-import { getPostsByUserId } from "../services/axios";
+import { getFeed } from "../services/axios";
 
-const usePosts = (userId) => {
+const useFeedPosts = (tag) => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     (async () => {
-      if (userId) {
-        const response = await getPostsByUserId(userId, page);
-        setPosts((p) => p.concat(response));
-      }
+      const response = await getFeed(page);
+      setPosts((p) => p.concat(response));
     })();
-  }, [userId, page]);
+  }, [page]);
 
   const getNextPage = () => {
     setPage(page + 1);
@@ -20,4 +18,4 @@ const usePosts = (userId) => {
   return { posts, getNextPage };
 };
 
-export default usePosts;
+export default useFeedPosts;

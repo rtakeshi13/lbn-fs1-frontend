@@ -12,7 +12,7 @@ export const CollectionWrapper = styled.div`
 export const CollectionMenu = styled(GridList)`
   align-items: center;
   flex-wrap: nowrap;
-  transform: translate(0);
+  transform: translateZ(0);
 `;
 
 export const Collection = styled.div`
