@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
+import { clearLocalStorage } from "../../services/localStorage";
 import { AppHeader, Wrapper, BackButton, Title, LogoutButton } from "./styles";
 
 const Header = (props) => {
@@ -16,7 +16,7 @@ const Header = (props) => {
   };
 
   const handleLogoutClick = () => {
-    localStorage.removeItem("labepics");
+    clearLocalStorage();
     history.replace("/");
   };
 

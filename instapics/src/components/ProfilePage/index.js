@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useParams } from "react-router-dom";
 
@@ -9,13 +9,30 @@ import { PostFeed } from "./styles";
 import ProfileView from "../ProfileView";
 import Skeleton from "@material-ui/lab/Skeleton";
 
+import PostModal from "../PostModal";
+import ProfileSkeleton from "../ProfileSkeleton";
+
 function ProfilePage() {
   const { nickname } = useParams();
   const profile = useProfile(nickname);
   const { posts, getNextPage } = useProfilePosts(profile && profile.id);
 
+  const [isPostOpen, setPostOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState();
+
+  const handlePostClick = (post) => () => {
+    setSelectedPost(post);
+    setPostOpen(true);
+  };
+
+  const handlePostClose = () => {
+    setSelectedPost();
+    setPostOpen(false);
+  };
+
   const postsRender = posts.map((i) => (
     <div
+      onClick={handlePostClick(i)}
       key={i.postId}
       style={{
         height: 240,
@@ -42,9 +59,14 @@ function ProfilePage() {
           >
             {postsRender}
           </PostFeed>
+          <PostModal
+            post={selectedPost}
+            isOpen={isPostOpen}
+            handleClose={handlePostClose}
+          />
         </div>
       ) : (
-        <Skeleton variant="rect" height={240} animation="wave" />
+        <ProfileSkeleton />
       )}
     </>
   );
