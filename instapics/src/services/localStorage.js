@@ -2,6 +2,10 @@ export function setDataToLocalStorage(data) {
   localStorage.setItem("labepics", JSON.stringify(data));
 }
 
+export function clearLocalStorage() {
+  localStorage.removeItem("labepics");
+}
+
 export function getDataFromLocalStorage() {
   try {
     return JSON.parse(localStorage.getItem("labepics"));

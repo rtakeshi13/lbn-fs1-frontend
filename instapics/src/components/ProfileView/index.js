@@ -6,7 +6,7 @@ import CollectionsMenu from "../CollectionsMenu";
 function ProfileView({ profile }) {
   return (
     <Wrapper>
-      <ProfilePicture />
+      <ProfilePicture src={profile.avatarUrl} />
 
       <CounterWrapper>
         <Counter>

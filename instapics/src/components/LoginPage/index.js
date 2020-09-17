@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 
 import { login } from "../../services/axios";
+import { setDataToLocalStorage } from "../../services/localStorage";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -51,12 +52,12 @@ const LoginPage = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const response = await login(form);
-
     if (response.sucess) {
-      localStorage.setItem(
-        "labepics",
-        JSON.stringify({ nickname: response.nickname, token: response.token })
-      );
+      setDataToLocalStorage({
+        nickname: response.nickname,
+        token: response.token,
+      });
+
       history.push(`/${response.nickname}`);
     } else {
       window.alert(response);
