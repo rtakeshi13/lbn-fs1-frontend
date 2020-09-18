@@ -1,31 +1,43 @@
 import React from "react";
 
-import { Wrapper, ProfileViewSkeleton, CollectionsWrapper } from "./styles";
+import {
+  Wrapper,
+  AvatarSkeleton,
+  CountersSkeleton,
+  CollectionSkeleton,
+  CollectionsWrapper,
+} from "./styles";
 
 function ProfileSkeleton() {
   return (
     <Wrapper>
-      <ProfileViewSkeleton
+      <AvatarSkeleton
         variant="circle"
         width={"5rem"}
         height={"5rem"}
         animation="wave"
       />
-      <ProfileViewSkeleton variant="rect" height={"3rem"} animation="wave" />
+      <CountersSkeleton variant="rect" height={"3rem"} animation="wave" />
       <CollectionsWrapper>
-        <ProfileViewSkeleton
+        <CollectionSkeleton
           variant="circle"
           width={"3rem"}
           height={"3rem"}
           animation="wave"
         />
-        <ProfileViewSkeleton
+        <CollectionSkeleton
           variant="circle"
           width={"3rem"}
           height={"3rem"}
           animation="wave"
         />
-        <ProfileViewSkeleton
+        <CollectionSkeleton
+          variant="circle"
+          width={"3rem"}
+          height={"3rem"}
+          animation="wave"
+        />
+        <CollectionSkeleton
           variant="circle"
           width={"3rem"}
           height={"3rem"}

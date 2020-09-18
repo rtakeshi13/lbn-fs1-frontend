@@ -37,26 +37,25 @@ export const formatPostAge2 = (createdAt) => {
 export const formatPostAge = (createdAt) => {
   const ageInMinutes = ((Date.now() - createdAt) / 60000).toFixed(0);
   if (ageInMinutes < 1) {
-    // menos de 1 minuto
+    /* less than a minute */
     return "just now";
   } else if (ageInMinutes < 59) {
-    // menos de 1 hora
+    /* less than 1 hour: shows minutes */
     return `${ageInMinutes} minutes ago`;
   } else if (ageInMinutes < 119) {
-    // menos de 2 horas
+    /* less than 1 day: shows hours */
     return `1 hour ago`;
   } else if (ageInMinutes < 1439) {
-    // menos de 1 dia
     const ageInHours = (ageInMinutes / 60).toFixed(0);
     return `${ageInHours} hours ago`;
   } else if (ageInMinutes < 2879) {
-    // menos de 2 dias
+    /* less than 1 week: shows days */
     return `1 day ago`;
   } else if (ageInMinutes < 10079) {
-    // menos de 1 semana
     const ageInDays = (ageInMinutes / 1440).toFixed(0);
     return `${ageInDays} days ago`;
   } else {
+    /* more than a week: shows day and month */
     const creationDate = new Date(createdAt);
     return `${
       monthNames[creationDate.getMonth()]
